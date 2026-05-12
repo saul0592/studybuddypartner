@@ -69,6 +69,7 @@ $cancellation_alert = $cancel_check->get_result();
     <nav>
         <div><strong>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></strong></div>
         <div>
+            <a href="message.php">Messages</a>
             <a href="edit_profile.php">Edit Profile</a>
             <a href="logout.php">Logout</a>
         </div>

@@ -65,4 +65,16 @@ $conn->query("CREATE TABLE IF NOT EXISTS Pairings (
     StudentID2 INT,
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");
+
+/**
+ * MESSAGES TABLE
+ * keeps track of the study buddy conversations
+ */
+$conn->query("CREATE TABLE IF NOT EXISTS Messages (
+    MessageID INT AUTO_INCREMENT PRIMARY KEY,
+    SenderName VARCHAR(100),
+    ReceiverName VARCHAR(100),
+    MessageText TEXT,
+    SentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
 ?>
