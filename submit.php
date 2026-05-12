@@ -52,4 +52,4 @@ include 'db.php'; // Connects to the database
         ?>
     </div>
 </body>
-</html>
+</html>%

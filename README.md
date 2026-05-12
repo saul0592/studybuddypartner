@@ -576,7 +576,7 @@ EndedAt     - Pairing end timestamp
 ## Future Enhancements 🚀
 
 Potential features to add:
-- [ ] In-app messaging system
+- [x] In-app messaging system
 - [ ] Review/rating system for partners
 - [ ] Study groups (more than 2 students)
 - [ ] Notifications via email
