@@ -212,14 +212,14 @@ Cancel Meeting → Mark StudyRequests as declined
 ## **Learning Outcomes**
 
 After reviewing this code, you'll understand:
-- ✅ How PHP sessions work
-- ✅ How to hash passwords securely
-- ✅ How to use prepared statements
-- ✅ How databases work with PHP
-- ✅ How to build a complete web application
-- ✅ Web application security best practices
-- ✅ User authentication flows
-- ✅ Multi-page web application architecture
+- How PHP sessions work
+- How to hash passwords securely
+- How to use prepared statements
+- How databases work with PHP
+- How to build a complete web application
+- Web application security best practices
+- User authentication flows
+- Multi-page web application architecture
 
 ---
 
