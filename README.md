@@ -4,7 +4,7 @@ A modern web application that helps students connect with compatible study partn
 
 ---
 
-## 🎯 **Features**
+## **Features**
 
 ✅ **User Authentication** - Secure registration and login system  
 ✅ **Smart Matching** - Find study partners in your major and subject  
@@ -16,7 +16,7 @@ A modern web application that helps students connect with compatible study partn
 
 ---
 
-## 📋 **System Requirements**
+## **System Requirements**
 
 | Component | Version |
 |-----------|---------|
@@ -29,7 +29,7 @@ A modern web application that helps students connect with compatible study partn
 
 ---
 
-## 🚀 **Quick Start (5 Minutes)**
+## **Quick Start (5 Minutes)**
 
 ### **Step 1: Setup Database**
 
@@ -71,7 +71,7 @@ Then visit: **http://localhost/studybuddy**
 
 ---
 
-## 📁 **File Structure & Purpose**
+## **File Structure & Purpose**
 
 ### **Frontend (HTML Pages)**
 
@@ -103,7 +103,7 @@ Then visit: **http://localhost/studybuddy**
 
 ---
 
-## 🗄️ **Database Tables**
+## **Database Tables**
 
 ### **Students Table**
 Stores user account information:
@@ -142,7 +142,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## 🔄 **How It Works**
+## **How It Works**
 
 ### **1. User Registration** → `register.php` → `process_register.php`
 - User creates account with username, password, major, subject
@@ -181,7 +181,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## 🎨 **UI/UX Features**
+## **UI/UX Features**
 
 ✨ **Modern Design**
 - Purple gradient theme
@@ -200,7 +200,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## 🔒 **Security Features**
+## **Security Features**
 
 🔐 **Password Security**
 - Passwords hashed using PHP's `password_hash()`
@@ -218,7 +218,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## 🧪 **Testing the App**
+## **Testing the App**
 
 ### **Test Scenario 1: Create Account & Login**
 ```
@@ -266,7 +266,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## ⚠️ **Troubleshooting**
+## **Troubleshooting**
 
 ### **"Connection failed" Error**
 **Problem**: Cannot connect to database  
@@ -297,7 +297,7 @@ CreatedAt (Timestamp)
 
 ---
 
-## 🛠️ **Customization Guide**
+## **Customization Guide**
 
 ### **Change Available Majors/Subjects**
 
@@ -334,7 +334,7 @@ background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
 
 ---
 
-## 📞 **Support & Maintenance**
+## **Support & Maintenance**
 
 ### **Regular Maintenance**
 - Check database size monthly (via phpMyAdmin)
@@ -357,7 +357,7 @@ background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
 
 ---
 
-## 📝 **License & Usage**
+## **License & Usage**
 
 This is an educational project. Feel free to:
 - ✅ Use for learning
@@ -367,7 +367,7 @@ This is an educational project. Feel free to:
 
 ---
 
-## 🚀 **Future Enhancements**
+## **Future Enhancements**
 
 Possible improvements:
 - Email notifications for new requests
@@ -380,7 +380,7 @@ Possible improvements:
 
 ---
 
-## ❓ **FAQ**
+## **FAQ**
 
 **Q: Can multiple users login simultaneously?**  
 A: Yes! Each user gets their own session. Open in different browsers to test.
@@ -389,7 +389,11 @@ A: Yes! Each user gets their own session. Open in different browsers to test.
 A: Both cancellations are handled independently. Both see notification.
 
 **Q: Can users message each other?**  
-A: Not yet - current version only supports requests. Email is stored but not integrated.
+A: Yes — the app now supports direct chats between paired study partners.
+   - Chats: `/message.php` lists your partners and opens a separate thread per partner.
+   - Messages are stored with `SenderID`/`ReceiverID` for reliable history.
+   - Only users who are paired (or have messaging history) appear in your chat list.
+   - New message notifications are created and shown in the dashboard.
 
 **Q: How long do sessions last?**  
 A: Default is 24 minutes (PHP `session.gc_maxlifetime`). Can be changed in `php.ini`
@@ -399,7 +403,7 @@ A: It's great for learning! For production, add email verification, rate limitin
 
 ---
 
-## 📚 **Learning Resources**
+## **Learning Resources**
 
 - [PHP Official Documentation](https://www.php.net/manual/)
 - [MySQL Basics](https://dev.mysql.com/doc/)
@@ -579,7 +583,6 @@ Potential features to add:
 - [x] In-app messaging system
 - [ ] Review/rating system for partners
 - [ ] Study groups (more than 2 students)
-- [ ] Notifications via email
 - [ ] Advanced search filters
 - [ ] Study session scheduling
 - [ ] Admin dashboard

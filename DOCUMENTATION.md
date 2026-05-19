@@ -163,6 +163,7 @@ CreatedAt   → When pairing was created
 | **Documentation** | Basic README | 500+ line guide |
 | **Readability** | Mixed formatting | Consistent style |
 | **Security** | Explained inline | Dedicated sections |
+| **Messaging** | None or global messages | Per-partner chat threads + notifications |
 
 ---
 

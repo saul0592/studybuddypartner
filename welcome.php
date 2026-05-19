@@ -15,6 +15,15 @@ $user_id = $_SESSION['user_id'];
 $major = $_SESSION['major'];
 $subject = $_SESSION['subject'];
 
+// --- NOTIFICATIONS: unread count and recent list ---
+$unread_count = 0;
+$notifications = [];
+$notif_stmt = $conn->prepare("SELECT NotificationID, ActorID, Type, ItemID, Message, IsRead, CreatedAt FROM Notifications WHERE UserID = ? ORDER BY CreatedAt DESC LIMIT 10");
+$notif_stmt->bind_param("i", $user_id);
+$notif_stmt->execute();
+$notif_res = $notif_stmt->get_result();
+while ($n = $notif_res->fetch_assoc()) { $notifications[] = $n; if ($n['IsRead'] == 0) $unread_count++; }
+
 // --- 1. SEARCH & FILTER LOGIC ---
 // Allow users to filter by major and subject
 $filter_major = isset($_GET['filter_major']) ? $_GET['filter_major'] : $major;
@@ -68,12 +77,63 @@ $cancellation_alert = $cancel_check->get_result();
 <body onload="updateSubjects('<?php echo $filter_subject; ?>')">
     <nav>
         <div><strong>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></strong></div>
-        <div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <!-- Notifications dropdown -->
+            <div style="position: relative;">
+                <a href="#" id="notifToggle" style="position: relative; text-decoration: none;">Notifications
+                    <?php if ($unread_count > 0): ?>
+                        <span style="background:#ff3b30;color:#fff;padding:2px 7px;border-radius:12px;font-size:12px;margin-left:8px;"><?php echo $unread_count; ?></span>
+                    <?php endif; ?>
+                </a>
+                <div id="notifMenu" style="display:none; position: absolute; right: 0; top: 22px; width: 320px; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); z-index: 20;">
+                    <div style="padding: 10px; border-bottom: 1px solid #f0f0f0;"><strong>Notifications</strong></div>
+                    <div style="max-height: 280px; overflow: auto;">
+                        <?php if (count($notifications) == 0): ?>
+                            <div style="padding: 12px; color: #666;">No notifications</div>
+                        <?php else: foreach ($notifications as $n): ?>
+                            <div style="padding: 10px; border-bottom: 1px solid #f7f7f7; background: <?php echo $n['IsRead'] == 0 ? '#f5f7ff' : '#fff'; ?>;">
+                                <div style="font-size: 13px; color: #222;">
+                                    <?php echo htmlspecialchars($n['Message']); ?>
+                                </div>
+                                <div style="font-size: 11px; color: #888; margin-top: 6px; display:flex; justify-content:space-between;">
+                                    <span><?php echo htmlspecialchars($n['Type']); ?></span>
+                                    <a href="notifications_mark_read.php?id=<?php echo $n['NotificationID']; ?>" style="color:#667eea; text-decoration:none;">Mark read</a>
+                                </div>
+                            </div>
+                        <?php endforeach; endif; ?>
+                    </div>
+                </div>
+            </div>
             <a href="message.php">Messages</a>
             <a href="edit_profile.php">Edit Profile</a>
             <a href="logout.php">Logout</a>
         </div>
     </nav>
+    <script>
+        // toggle notifications dropdown
+        document.addEventListener('DOMContentLoaded', function(){
+            var t = document.getElementById('notifToggle');
+            var m = document.getElementById('notifMenu');
+            t && t.addEventListener('click', function(e){ e.preventDefault(); m.style.display = m.style.display === 'none' ? 'block' : 'none'; });
+
+            // simple polling for unread count every 12 seconds
+            setInterval(function(){
+                fetch('notifications_count.php')
+                .then(r => r.json())
+                .then(data => {
+                    var badge = t.querySelector('span');
+                    if (data.unread && data.unread > 0) {
+                        if (!badge) {
+                            var s = document.createElement('span'); s.style.cssText = 'background:#ff3b30;color:#fff;padding:2px 7px;border-radius:12px;font-size:12px;margin-left:8px;'; s.textContent = data.unread; t.appendChild(s);
+                        } else { badge.textContent = data.unread; }
+                    } else if (badge) {
+                        badge.remove();
+                    }
+                })
+                .catch(()=>{});
+            }, 12000);
+        });
+    </script>
 
     <div class="container">
         <!-- SYSTEM NOTIFICATIONS -->

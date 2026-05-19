@@ -34,6 +34,14 @@ if ($existing->num_rows == 0) {
     $stmt->bind_param("ii", $sender_id, $receiver_id);
     
     if ($stmt->execute()) {
+        // Insert a notification for the receiver to inform them of the incoming request
+        $request_id = $stmt->insert_id;
+        $notif = $conn->prepare("INSERT INTO Notifications (UserID, ActorID, Type, ItemID, Message) VALUES (?, ?, ?, ?, ?)");
+        $type = 'request_sent';
+        $message_text = 'You have a new study request.';
+        $notif->bind_param("iisis", $receiver_id, $sender_id, $type, $request_id, $message_text);
+        $notif->execute();
+
         header("Location: welcome.php?status=request_sent");
     } else {
         header("Location: welcome.php?error=request_failed");

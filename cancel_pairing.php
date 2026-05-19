@@ -38,6 +38,13 @@ if ($pair) {
     $delete->bind_param("i", $pairing_id);
     $delete->execute();
 
+    // 4. Notify the other user that the pairing was cancelled
+    $notif = $conn->prepare("INSERT INTO Notifications (UserID, ActorID, Type, ItemID, Message) VALUES (?, ?, ?, ?, ?)");
+    $type = 'pairing_cancelled';
+    $msg = 'Your study meeting was cancelled by your partner.';
+    $notif->bind_param("iisis", $other_user, $user_id, $type, $pairing_id, $msg);
+    $notif->execute();
+
     // 4. Return to dashboard with a success flag
     header("Location: welcome.php?cancelled=success");
     exit();
