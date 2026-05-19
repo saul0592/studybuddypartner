@@ -1,6 +1,6 @@
-# 📋 CODE DOCUMENTATION SUMMARY
+# CODE DOCUMENTATION SUMMARY
 
-## ✅ **What Was Improved**
+## **What Was Improved**
 
 ### **1. Comprehensive Comments Added to All PHP Files**
 
@@ -11,21 +11,21 @@ Each backend file now includes:
 - **Process flow**: How data moves through the system
 
 #### **Backend Files Documented:**
-- ✅ `db.php` - Database connection & table setup
-- ✅ `process_login.php` - Login authentication flow
-- ✅ `process_register.php` - User registration
-- ✅ `send_request.php` - Study request creation
-- ✅ `respond_request.php` - Accept/decline requests
-- ✅ `cancel_pairing.php` - Cancel meetings
-- ✅ `logout.php` - Session termination
-- ✅ `edit_profile.php` - Profile updates
+- `db.php` - Database connection & table setup
+- `process_login.php` - Login authentication flow
+- `process_register.php` - User registration
+- `send_request.php` - Study request creation
+- `respond_request.php` - Accept/decline requests
+- `cancel_pairing.php` - Cancel meetings
+- `logout.php` - Session termination
+- `edit_profile.php` - Profile updates
 
 #### **Frontend Files Updated:**
-- ✅ `index.php` - Home page with labels
-- ✅ `login.php` - Better form documentation
-- ✅ `register.php` - Dynamic form explanation
-- ✅ `edit_profile.php` - Clear form sections
-- ✅ `welcome.php` - Dashboard logic explained
+- `index.php` - Home page with labels
+- `login.php` - Better form documentation
+- `register.php` - Dynamic form explanation
+- `edit_profile.php` - Clear form sections
+- `welcome.php` - Dashboard logic explained
 
 ### **2. Code Simplified for Readability**
 
@@ -45,19 +45,19 @@ $pending_query = "SELECT * FROM StudyRequests WHERE ReceiverID = ? AND Status = 
 ### **3. Comprehensive README.md Created**
 
 Now includes:
-- ✅ **Quick Start Guide** (5 minutes)
-- ✅ **File Structure** with purpose of each file
-- ✅ **Database Schema** explanation
-- ✅ **How It Works** step-by-step flow
-- ✅ **Security Features** explained
-- ✅ **Testing Scenarios** for all features
-- ✅ **Troubleshooting Guide**
-- ✅ **Customization Guide**
-- ✅ **FAQ** for common questions
+- **Quick Start Guide** (5 minutes)
+- **File Structure** with purpose of each file
+- **Database Schema** explanation
+- **How It Works** step-by-step flow
+- **Security Features** explained
+- **Testing Scenarios** for all features
+- **Troubleshooting Guide**
+- **Customization Guide**
+- **FAQ** for common questions
 
 ---
 
-## 🗂️ **Project Structure Clarity**
+## **Project Structure Clarity**
 
 ### **Frontend → Backend Flow**
 
@@ -84,7 +84,7 @@ Display Result to User
 
 ---
 
-## 🔒 **Security Explanations**
+## **Security Explanations**
 
 All files now document:
 
@@ -117,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
 
 ---
 
-## 📊 **Database Documentation**
+## **Database Documentation**
 
 ### **Students Table**
 ```
@@ -153,7 +153,7 @@ CreatedAt   → When pairing was created
 
 ---
 
-## 🎯 **Key Improvements Made**
+## **Key Improvements Made**
 
 | Aspect | Before | After |
 |--------|--------|-------|
@@ -167,7 +167,7 @@ CreatedAt   → When pairing was created
 
 ---
 
-## 🚀 **Quick Reference**
+## **Quick Reference**
 
 ### **User Flow**
 1. **Home** (index.php) → Choose Login or Register
@@ -191,7 +191,7 @@ Cancel Meeting → Mark StudyRequests as declined
 
 ---
 
-## 📚 **For New Developers**
+## **For New Developers**
 
 ### **Getting Started:**
 1. Read `README.md` for overview
@@ -209,7 +209,7 @@ Cancel Meeting → Mark StudyRequests as declined
 
 ---
 
-## 🎓 **Learning Outcomes**
+## **Learning Outcomes**
 
 After reviewing this code, you'll understand:
 - ✅ How PHP sessions work
@@ -223,7 +223,7 @@ After reviewing this code, you'll understand:
 
 ---
 
-## 📞 **Questions to Ask Yourself**
+## **Questions to Ask Yourself**
 
 1. **Authentication**: How does login verify users?
 2. **Security**: Why are passwords hashed?
