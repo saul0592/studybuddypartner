@@ -1,4 +1,4 @@
-# Study Buddy Finder 📚
+# Study Buddy Finder
 
 A modern web application that helps students connect with compatible study partners based on their major, subject, and study preferences.
 
@@ -6,13 +6,13 @@ A modern web application that helps students connect with compatible study partn
 
 ## **Features**
 
-✅ **User Authentication** - Secure registration and login system  
-✅ **Smart Matching** - Find study partners in your major and subject  
-✅ **Study Requests** - Send and receive partnership requests  
-✅ **Confirmed Pairings** - Calendar view of active study sessions  
-✅ **Profile Management** - Update your info and study preferences  
-✅ **Request Notifications** - See pending requests instantly  
-✅ **Meeting Cancellation** - Notify partner when cancelling sessions  
+   **User Authentication** - Secure registration and login system  
+   **Smart Matching** - Find study partners in your major and subject  
+   **Study Requests** - Send and receive partnership requests  
+   **Confirmed Pairings** - Calendar view of active study sessions  
+   **Profile Management** - Update your info and study preferences  
+   **Request Notifications** - See pending requests instantly  
+   **Meeting Cancellation** - Notify partner when cancelling sessions  
 
 ---
 
@@ -183,17 +183,17 @@ CreatedAt (Timestamp)
 
 ## **UI/UX Features**
 
-✨ **Modern Design**
+  **Modern Design**
 - Purple gradient theme
 - Smooth animations & hover effects
 - Responsive mobile layout
 
-🎯 **Clear Navigation**
+  **Clear Navigation**
 - Consistent header across pages
 - Easy-to-find buttons and forms
 - Visual feedback for all actions
 
-📱 **Mobile Friendly**
+  **Mobile Friendly**
 - Works on phones, tablets, desktops
 - Touch-friendly buttons
 - Readable text on all screen sizes
@@ -202,16 +202,16 @@ CreatedAt (Timestamp)
 
 ## **Security Features**
 
-🔐 **Password Security**
+  **Password Security**
 - Passwords hashed using PHP's `password_hash()`
 - Never stored as plain text
 - Verified using `password_verify()`
 
-🛡️ **SQL Injection Prevention**
+  **SQL Injection Prevention**
 - All database queries use prepared statements
 - User input safely bound with `bind_param()`
 
-🔑 **Session Security**
+  **Session Security**
 - User must be logged in (session check on protected pages)
 - Session destroyed on logout
 - Unauthorized access redirected to login
@@ -360,10 +360,10 @@ background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
 ## **License & Usage**
 
 This is an educational project. Feel free to:
-- ✅ Use for learning
-- ✅ Modify for your needs
-- ✅ Run in school/university
-- ✅ Share with others (with credit)
+-  Use for learning
+-  Modify for your needs
+-  Run in school/university
+-  Share with others (with credit)
 
 ---
 
@@ -412,7 +412,7 @@ A: It's great for learning! For production, add email verification, rate limitin
 
 ---
 
-**Happy studying! 📖✨**
+**Happy studying!**
    - Go to `http://localhost/studybuddy/`
    - Click **"Login to Your Account"**
    - Enter your username and password
@@ -421,21 +421,21 @@ A: It's great for learning! For production, add email verification, rate limitin
 ### 3. **Dashboard Overview** (welcome.php)
    After login, you'll see:
 
-   **📋 Your Profile**
+   **Your Profile**
    - Shows your current major, subject, and study time/option botton in session for study another major asside to the major in the registration then prompt to the other user
    - Click **"Edit Profile"** to make changes
 
-   **✅ Active Study Partnerships**
+   **Active Study Partnerships**
    - Lists students you're currently paired with
    - Shows their contact info and study schedule
    --Create an mocks users to pairs(100)
 
-   **📬 Study Requests**
+   **Study Requests**
    - Shows incoming partnership requests
    - **Accept** - Creates a partnership
    - **Decline** - Rejects the request
 
-   **🔍 Available Study Partners**
+   **Available Study Partners**
    - Shows other students in your major/subject
    - Click **"Send Study Request"** to reach out
    - Include an optional message explaining why you want to study together
@@ -463,7 +463,7 @@ A: It's great for learning! For production, add email verification, rate limitin
 
 ---
 
-## Database Schema 🗄️
+## Database Schema
 
 ### Students Table
 ```
@@ -506,7 +506,7 @@ EndedAt     - Pairing end timestamp
 
 ---
 
-## Troubleshooting 🔧
+## Troubleshooting
 
 ### "Connection failed" Error
 - **Solution**: Check your MySQL credentials in `db.php`
@@ -536,7 +536,7 @@ EndedAt     - Pairing end timestamp
 
 ---
 
-## Testing the Application 🧪
+## Testing the Application
 
 ### Quick Test Scenario
 
@@ -568,7 +568,7 @@ EndedAt     - Pairing end timestamp
 
 ---
 
-## Security Notes 🔒
+## Security Notes
 
 - All passwords are hashed using PHP's `password_hash()` function
 - All user inputs are validated and escaped
@@ -577,7 +577,7 @@ EndedAt     - Pairing end timestamp
 
 ---
 
-## Future Enhancements 🚀
+## Future Enhancements
 
 Potential features to add:
 - [x] In-app messaging system
@@ -590,7 +590,7 @@ Potential features to add:
 
 ---
 
-## Support & Debugging 📞
+## Support & Debugging
 
 ### Debug Database
 Open `http://localhost/studybuddy/debug.php` to view:
@@ -616,9 +616,9 @@ This project is open source and available for educational purposes.
 ## Author Notes
 
 **Study Buddy Finder** was built to help students connect efficiently based on:
-- ✅ Same academic major
-- ✅ Same study subject
-- ✅ Compatible study schedules
-- ✅ Student goals and availability
+- Same academic major
+- Same study subject
+- Compatible study schedules
+- Student goals and availability
 
 Thank you for using Study Buddy Finder! 🎓
