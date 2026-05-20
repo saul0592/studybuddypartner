@@ -31,12 +31,13 @@ $filter_subject = isset($_GET['filter_subject']) ? $_GET['filter_subject'] : $su
 
 // Find all students with same major/subject (excluding: current user and students already in pairings)
 $query = "SELECT * FROM Students 
-          WHERE Major = ? AND Subject = ? AND StudentID != ? 
+          WHERE Major = ?
+          AND (Subject = ? OR ? = '')
+          AND StudentID != ?
           AND StudentID NOT IN (SELECT StudentID1 FROM Pairings)
           AND StudentID NOT IN (SELECT StudentID2 FROM Pairings)";
-
 $stmt = $conn->prepare($query);
-$stmt->bind_param("ssi", $filter_major, $filter_subject, $user_id);
+$stmt->bind_param("sssi", $filter_major, $filter_subject, $filter_subject, $user_id);
 $stmt->execute();
 $partners = $stmt->get_result();
 
