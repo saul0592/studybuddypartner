@@ -31,12 +31,11 @@ $filter_subject = isset($_GET['filter_subject']) ? $_GET['filter_subject'] : $su
 
 // Find all students with same major/subject (excluding: current user and students already in pairings)
 $query = "SELECT * FROM Students 
-          WHERE Major = ? AND Subject = ? AND StudentID != ? 
-          AND StudentID NOT IN (SELECT StudentID1 FROM Pairings)
-          AND StudentID NOT IN (SELECT StudentID2 FROM Pairings)";
-
+          WHERE Major = ?
+          AND (Subject = ? OR ? = '')
+          AND StudentID != ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("ssi", $filter_major, $filter_subject, $user_id);
+$stmt->bind_param("sssi", $filter_major, $filter_subject, $filter_subject, $user_id);
 $stmt->execute();
 $partners = $stmt->get_result();
 
@@ -104,9 +103,10 @@ $cancellation_alert = $cancel_check->get_result();
                     </div>
                 </div>
             </div>
-            <a href="message.php">Messages</a>
+            <a href="message.php">Private Messages</a>
             <a href="edit_profile.php">Edit Profile</a>
             <a href="logout.php">Logout</a>
+            <a href="group_message.php" style="font-weight: bold;">Group Messages</a>
         </div>
     </nav>
     <script>
@@ -139,6 +139,10 @@ $cancellation_alert = $cancel_check->get_result();
         <!-- SYSTEM NOTIFICATIONS -->
         <?php if(isset($_GET['status']) && $_GET['status'] == 'request_sent'): ?>
             <div class="success-message">Study request sent successfully!</div>
+        <?php endif; ?>
+
+        <?php if(isset($_GET['status']) && $_GET['status'] == 'group_created'): ?>
+            <div class="success-message">Study group created and partner added successfully! You can now start chatting.</div>
         <?php endif; ?>
 
         <?php if(isset($_GET['cancelled']) && $_GET['cancelled'] == 'success'): ?>
@@ -210,11 +214,11 @@ $cancellation_alert = $cancel_check->get_result();
                                         <?php echo htmlspecialchars($row['PreferredStudyTime']); ?>
                                     </small>
                                 </div>
-                                
                                 <form action="send_request.php" method="POST" style="margin: 0;">
                                     <input type="hidden" name="receiver_id" value="<?php echo $row['StudentID']; ?>">
                                     <button type="submit" class="btn" style="padding: 8px 15px; font-size: 0.9em;">Request</button>
                                 </form>
+                                <a href="create_group.php?partner_id=<?php echo $row['StudentID']; ?>&subject=<?php echo urlencode($row['Subject']); ?>" class="btn" style="padding: 8px 15px; font-size: 0.9em; text-decoration: none; background: #10b981;">add to Group</a>
                             </div>
                         <?php endwhile; ?>
                     <?php else: ?>
