@@ -163,6 +163,7 @@ if ($group_id) {
             <a href="edit_profile.php">Edit Profile</a>
             <a href="logout.php">Logout</a>
             <a href="group_message.php" style="font-weight: bold;">Group Messages</a>
+            <a href="welcome.php"> Return page</a>
         </div>
     </nav>
     <script>

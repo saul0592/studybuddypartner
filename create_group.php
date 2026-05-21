@@ -37,8 +37,27 @@ if (isset ($_GET['partner_id']) && isset ($_GET['subject'])) {
     header("Location: group_message.php?group_id=" . $new_group_id);
     exit();
 }
-else {
-    header("Location: welcome.php");
-    exit();
-}
-?>
+
+// If group creation parameters are missing, show a simple page with a return button.
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f7ff; margin: 0; padding: 0; }
+        .page-shell { max-width: 680px; margin: 100px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.08); text-align: center; }
+        .back-button { display: inline-block; padding: 12px 22px; background: #4f46e5; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 20px; }
+        .back-button:hover { background: #4338ca; }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <h1>Return to Dashboard</h1>
+        <p>It looks like this page was opened without a partner selected. Use the button below to go back to your welcome page.</p>
+        <a href="welcome.php" class="back-button">Back to Welcome</a>
+    </div>
+</body>
+</html>
