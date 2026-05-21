@@ -11,7 +11,8 @@ A modern web application that helps students connect with compatible study partn
    **Study Requests** - Send and receive partnership requests  
    **Confirmed Pairings** - Calendar view of active study sessions  
    **Profile Management** - Update your info and study preferences  
-   **Request Notifications** - See pending requests instantly  
+   **In-App Notifications** - See requests, responses, cancellations, and new messages  
+   **Group Chat Support** - Create groups and chat with teammates  
    **Meeting Cancellation** - Notify partner when cancelling sessions  
 
 ---
@@ -139,7 +140,36 @@ StudentID1 (Partner 1)
 StudentID2 (Partner 2)
 CreatedAt (Timestamp)
 ```
+### **Groups Table**
+Stores study group rooms and their subject:
+```
+GroupID (Primary Key)
+GroupName
+Subject
+CreatedAt (Timestamp)
+```
 
+### **GroupMembers Table**
+Tracks members inside each group:
+```
+MemberID (Primary Key)
+GroupID (FK to Groups)
+StudentID (FK to Students)
+JoinedAt (Timestamp)
+```
+
+### **Notifications Table**
+Stores all in-app notifications for users:
+```
+NotificationID (Primary Key)
+UserID (Recipient student)
+ActorID (Triggering student)
+Type (request_sent, request_accepted, request_declined, pairing_cancelled, new_message, group_message)
+ItemID (Related record ID)
+Message
+IsRead (0/1)
+CreatedAt (Timestamp)
+```
 ---
 
 ## **How It Works**
@@ -178,7 +208,11 @@ CreatedAt (Timestamp)
 - Removes pairing from calendar
 - Notifies other student via declined request notification
 - Both students see cancellation alert
-
+### **8. Group Creation & Group Chat** → `create_group.php`, `group_message.php`
+- Start a new study group with a partner
+- Add more teammates to the group after creation
+- Share messages with all group members in one room
+- Group members receive notifications for new group messages
 ---
 
 ## **UI/UX Features**
@@ -395,6 +429,12 @@ A: Yes — the app now supports direct chats between paired study partners.
    - Only users who are paired (or have messaging history) appear in your chat list.
    - New message notifications are created and shown in the dashboard.
 
+**Q: Can users create study groups?**  
+A: Yes — the app supports group creation and group chat.
+   - Create a group from the dashboard with the **"Add to Group"** button.
+   - The new group opens in `group_message.php`.
+   - Group members can be added and all members receive group message notifications.
+
 **Q: How long do sessions last?**  
 A: Default is 24 minutes (PHP `session.gc_maxlifetime`). Can be changed in `php.ini`
 
@@ -582,7 +622,7 @@ EndedAt     - Pairing end timestamp
 Potential features to add:
 - [x] In-app messaging system
 - [ ] Review/rating system for partners
-- [ ] Study groups (more than 2 students)
+- [ ] Advanced group management and group approvals
 - [ ] Advanced search filters
 - [ ] Study session scheduling
 - [ ] Admin dashboard

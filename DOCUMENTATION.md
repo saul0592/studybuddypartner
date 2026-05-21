@@ -19,6 +19,8 @@ Each backend file now includes:
 - `cancel_pairing.php` - Cancel meetings
 - `logout.php` - Session termination
 - `edit_profile.php` - Profile updates
+- `create_group.php` - Group creation flow
+- `group_message.php` - Group chat and member management
 
 #### **Frontend Files Updated:**
 - `index.php` - Home page with labels
@@ -151,6 +153,34 @@ StudentID2  → Second partner (FK to Students)
 CreatedAt   → When pairing was created
 ```
 
+### **Groups Table**
+```
+GroupID     → Unique group identifier
+GroupName   → Name of the group room
+Subject     → Study subject for the group
+CreatedAt   → When group was created
+```
+
+### **GroupMembers Table**
+```
+MemberID    → Unique membership record identifier
+GroupID     → Group room identifier (FK to Groups)
+StudentID   → Group member identifier (FK to Students)
+JoinedAt    → Timestamp when member joined the group
+```
+
+### **Notifications Table**
+```
+NotificationID → Unique notification record
+UserID         → Recipient student (FK to Students)
+ActorID        → Originating student or action initiator
+Type           → Event category (request_sent, accepted, declined, cancelled, new_message, group_message)
+ItemID         → Related record ID for the action
+Message        → Notification text shown to user
+IsRead         → 0 = unread, 1 = read
+CreatedAt      → Notification timestamp
+```
+
 ---
 
 ## **Key Improvements Made**
@@ -164,6 +194,7 @@ CreatedAt   → When pairing was created
 | **Readability** | Mixed formatting | Consistent style |
 | **Security** | Explained inline | Dedicated sections |
 | **Messaging** | None or global messages | Per-partner chat threads + notifications |
+| **Group Chat** | No group rooms | Create groups, add members, and notify group teammates |
 
 ---
 
@@ -176,6 +207,7 @@ CreatedAt   → When pairing was created
 4. **Dashboard** (welcome.php) → Find Partners
 5. **Send Request** (send_request.php) → Request Partner
 6. **Respond** (respond_request.php) → Accept/Decline
+6. **Create Group** (welcome.php → create_group.php) → Start a group room
 7. **Calendar** (welcome.php) → See Confirmed Pairings
 8. **Cancel** (cancel_pairing.php) → End Meeting
 9. **Logout** (logout.php) → End Session
