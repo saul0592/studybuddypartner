@@ -156,7 +156,7 @@ if ($has_partner) {
     <title>Chats</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos base para asegurar que la cuadrícula se mantenga estable */
+        /* style for the chat layout grid */
         .chat-layout-grid { 
             display: grid !important; 
             grid-template-columns: 260px 1fr !important; 
@@ -218,9 +218,9 @@ if ($has_partner) {
                             <?php else: foreach ($messages as $row): 
                                 $isMe = (isset($row['SenderID']) && $row['SenderID'] == $user_id) || (isset($row['SenderName']) && $row['SenderName'] == $user_name);
                                 
-                                // Configuración dinámica de estilos según el emisor
+                                // Style change depending on who is sending the message
                                 $justify = $isMe ? 'flex-end' : 'flex-start';
-                                $bg_color = $isMe ? '#e0e7ff' : '#f3f4f6'; // Azul claro para mí, gris para el compañero
+                                $bg_color = $isMe ? '#e0e7ff' : '#f3f4f6'; // Light blue for me, gray for partner
                                 $text_color = $isMe ? '#1e1b4b' : '#1f2937';
                                 $radius = $isMe ? '16px 16px 4px 16px' : '16px 16px 16px 4px';
                                 $label = $isMe ? 'You' : htmlspecialchars($row['SenderName']);

@@ -250,16 +250,16 @@ a:hover {
 
 /* Chat bubble styles */
 .chat-bubble {
-    width: max-content;      /* Fuerza a la burbuja a estirarse horizontalmente según el texto */
-    max-width: 75%;          /* Si el mensaje es larguísimo, se detiene al 75% y salta de línea */
-    min-width: 60px;         /* Evita que la burbuja se encoja de más */
-    display: inline-block;   /* Asegura que se comporte como un bloque de texto fluido */
-    white-space: normal;     /* Evita comportamientos extraños de saltos de línea por letra */
-    
+    width: max-content;      /* Forces the bubble to stretch horizontally depending on the text */
+    max-width: 75%;          /* If the message is too long, it stops at 75% and wraps to the next line */
+    min-width: 60px;         /* Prevents the bubble from shrinking too much */
+    display: inline-block;   /* Makes sure it behaves like a fluid text block */
+    white-space: normal;     /* Prevents weird line break behaviors by letter */
+
     padding: 10px 14px;
     border-radius: 16px;
     font-size: 0.95em;
-    line-index: 1.4;
+    inline-size: 1.4;
     position: relative;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
