@@ -159,6 +159,7 @@ if ($group_id) {
                     </div>
                 </div>
             </div>
+            <!-- navigation links -->
             <a href="message.php">Private Messages</a>
             <a href="edit_profile.php">Edit Profile</a>
             <a href="logout.php">Logout</a>
